@@ -53,62 +53,57 @@
     }
   </style>
   <script>
+    <!--Name and Password JS Validation-->
     function validateForm(){
-      const name=document.myform.name.value.trim();
+    const name=document.myForm.name.value.trim();
+    const password=document.myForm.password.value.trim();
+    const email=document.myForm.email.value.trim();
+    const phone=document.myForm.phone.value.trim();
+    const namePattern=/^[A-Za-z\s]+$/;
+    if(name=="") {
+        alert("Enter your name");
+        return false;
+    }
+    else if (!namePattern.test(name)) {
+        alert("name should contain letters and spaces .")
+        return false;
+    }
+    else if (name.length<6) {
+        alert("name should be at least 6 characters long");
+        return false;
+    }
 
-      const password=document.myform.password.value.trim();
-    
-    const email=document.myform.email.value.trim();
+    const passwordPattern=/^(?=.*[A-Za-z])(?=.*\d).{6,}$/;
+    if(password=="") {
+        alert("Enter your password");
+        return false;
+    }
+    else if (!passwordPattern.test(password)) {
+        alert("Password must be at least 6 characters long and contain at least one letter and one number.");
+        return false;
+    }
 
-    const phone=document.myform.phone.value.trim();
-    
-     const namepattern=/^[A-Za-z\s]+$/;
-     const emailpattern =/^[A-Z a-z 0-9._%+-]+@[A-Z a-z 0-9.-]+\.[A-Z a-z] {2,}$/;
-     const phonepattern= /^[0-9] {10}$/;
-     if(name=="") {
-      alert("Enter your name");
-      return false;
-     }
-     else if (!namepattern.test(name)) {
-      alert("name should contain letters and spaces .")
-      return false;
-     }
-     else if (name.length<6) {
-      alert("name should be at least 6 characters long");
-      return false;
-     }
-     if(password="") {
-      alert("Enter your password");
-      return false;
-     }
-     else if (password.length<6) {
-      alert("password should ne at least 6 characters long");
-      return false;
-     }
-    
+    const emailPattern =/^[A-Z a-z 0-9._%+-]+@[A-Z a-z 0-9.-]+\.[A-Z a-z]{2,}$/;
     if(email==""){
         alert("Enter your email id");
     }
     else if (!emailPattern.test(email)) {
         alert("Invalid email format");
     }
+
+    const phonePattern= /^[0-9]{10}$/;
     if(phone=="") {
         alert("enter your phone number ");
         return false;
     }
     else if(!phonePattern.test(phone)){
-        alert("Phone number must be 10 digits,");
+        alert("Phone number must be 10 digits");
         return false;
     }
-    
-        alert("form submitted successfully");
+    alert("form submitted successfully");
     return true ;
   }
-    
-    
   </script>
-
-  
 </head>
 
 <body>
